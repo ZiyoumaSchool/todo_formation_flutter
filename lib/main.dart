@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_ziyouma/screen/home_todo_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,19 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeTodo(),
-    );
-  }
-}
-
-class HomeTodo extends StatelessWidget {
-  const HomeTodo({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Text("Delano roosvelt"),
+      home: const HomeTodoScreen(),
     );
   }
 }
