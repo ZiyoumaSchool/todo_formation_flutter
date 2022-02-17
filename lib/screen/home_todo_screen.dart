@@ -10,14 +10,14 @@ class HomeTodoScreen extends StatefulWidget {
 }
 
 class _HomeTodoScreenState extends State<HomeTodoScreen> {
+  // ignore: non_constant_identifier_names
   List<TodoModel> all_task = [];
 
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _describeController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _describeController = TextEditingController();
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     StorageManager().readAllTask().then(
           (value) => setState(
@@ -37,8 +37,8 @@ class _HomeTodoScreenState extends State<HomeTodoScreen> {
           future: StorageManager().readAllTask(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              if (snapshot.data!.length == 0) {
-                return Center(
+              if (snapshot.data!.isEmpty) {
+                return const Center(
                   child: Text('You have no task'),
                 );
               }
@@ -53,7 +53,7 @@ class _HomeTodoScreenState extends State<HomeTodoScreen> {
                 },
               );
             } else {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             }
@@ -61,12 +61,12 @@ class _HomeTodoScreenState extends State<HomeTodoScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () => showDialog(
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text('Add new task'),
+              title: const Text('Add new task'),
               actions: <Widget>[
                 TextButton(
                   onPressed: () => Navigator.pop(context, 'Cancel'),
@@ -95,13 +95,13 @@ class _HomeTodoScreenState extends State<HomeTodoScreen> {
                 children: <Widget>[
                   TextField(
                     controller: _nameController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Task name',
                     ),
                   ),
                   TextField(
                     controller: _describeController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Task describe',
                     ),
                   ),
