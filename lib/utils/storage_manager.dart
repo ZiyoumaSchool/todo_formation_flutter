@@ -14,12 +14,12 @@ class StorageManager {
   Future<File> get _localFile async {
     final path = await _localPath;
     // check if file not exist create file
-    var file_db = File('$path/todo_data.json');
-    bool file_exist = await file_db.exists();
+    var fileDb = File('$path/todo_data.json');
+    bool fileExist = await fileDb.exists();
 
-    if (!file_exist) file_db.create();
+    if (!fileExist) fileDb.create();
 
-    return file_db;
+    return fileDb;
   }
 
   Future<List<TodoModel>> readAllTask() async {
@@ -28,14 +28,14 @@ class StorageManager {
     // Read the file
     final contents = await file.readAsString();
 
-    List json_task = jsonDecode(contents);
+    List jsonTask = jsonDecode(contents);
 
-    return json_task.map((e) => TodoModel.fromJson(e)).toList();
+    return jsonTask.map((e) => TodoModel.fromJson(e)).toList();
   }
 
-  Future<File> writeTask(List<TodoModel> todo_list) async {
+  Future<File> writeTask(List<TodoModel> todoList) async {
     final file = await _localFile;
-    final contents = todo_list.map((e) => e.toJson()).toList();
+    final contents = todoList.map((e) => e.toJson()).toList();
 
     // Write the file
     return file.writeAsString(jsonEncode(contents));
