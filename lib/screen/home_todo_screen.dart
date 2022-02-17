@@ -100,6 +100,7 @@ class _HomeTodoScreenState extends State<HomeTodoScreen> {
                     ),
                   ),
                   TextField(
+                    maxLines: 3,
                     controller: _describeController,
                     decoration: const InputDecoration(
                       labelText: 'Task describe',
